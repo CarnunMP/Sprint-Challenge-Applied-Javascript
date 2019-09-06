@@ -33,6 +33,7 @@ function Carousel(images) {
     let imageElement = document.createElement("img");
     imageElement.setAttribute("src", image);
     imageElement.style.display = "inherit";
+    imageElement.style.transition = "width 0.3s";
     imageElements.push(imageElement);
   });
 
