@@ -21,7 +21,7 @@
 function Carousel(images) {
   const [carousel, leftButton, rightButton] = ["carousel", "left-button", "right-button"].map(str => {
     const element = document.createElement("div");
-    element.setAttribute("div", str);
+    element.setAttribute("class", str);
     return element;
   });
 
@@ -32,6 +32,7 @@ function Carousel(images) {
   images.forEach(image => {
     let imageElement = document.createElement("img");
     imageElement.setAttribute("src", image);
+    imageElement.style.display = "inherit";
     imageElements.push(imageElement);
   });
 
@@ -45,29 +46,23 @@ function Carousel(images) {
   return carousel;
 }
 
-
 const images = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
 const carouselContainer = document.querySelector(".carousel-container");
 const carouselElement = Carousel(images);
 carouselContainer.appendChild(carouselElement);
-carouselContainer.style.flexDirection = "row";
 
 const carouselImages = carouselContainer.querySelectorAll("img");
-console.log(carouselImages);
 let currentIndex = 0;
 function displayCurrentImage() {
   carouselImages.forEach((image, index) => {
     index != currentIndex ?
     image.style.width = "0":
     image.style.width = "inherit";
-
-    console.log(`Current index is : ${currentIndex}`);
   });
 }
 displayCurrentImage();
 
 const buttons = carouselElement.querySelectorAll("div");
-console.log(buttons);
 buttons[0].addEventListener("click", decreaseCurrentIndex);
 buttons[1].addEventListener("click", increaseCurrentIndex);
 
