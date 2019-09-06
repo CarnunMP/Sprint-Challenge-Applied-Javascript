@@ -9,4 +9,38 @@
 //  </div >
 // And add it to the DOM in the .headerContainer component
 
-function Header() {}
+function Header() {
+    const header = document.createElement("div");
+    header.setAttribute("class", "header");
+
+    const date = document.createElement("span");
+    date.setAttribute("class", "date");
+    date.textContent = "SMARCH 28, 2019";
+
+    const title = document.createElement("h1");
+    title.textContent = "Lambda Times";
+
+    const temp = document.createElement("span");
+    temp.setAttribute("class", "temp");
+    temp.textContent = "98°";
+
+    let children = [date, title, temp];
+    children.forEach(element => {
+        header.appendChild(element);
+    });
+
+    return header;
+
+    // const [header, date, title, temp] = ["div", "span", "h1", "span"].map(str => document.createElement(str));
+    // [header, "header", date, "date", temp, "temp"].forEach((e, index) => {
+    //     if (index % 2 === 0) {
+    //         e.setAttribute("class" , index + 1)
+    //     } 
+    // });
+    // console.log(date);
+
+    // I think I'll leave the above code as-is! I took an approach more like the one attempted here in the Tabs section. :)
+}
+
+let headerContainer = document.querySelector(".header-container");
+headerContainer.appendChild(Header());
