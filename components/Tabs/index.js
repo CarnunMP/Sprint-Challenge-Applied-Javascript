@@ -16,3 +16,8 @@ axios.get("https://lambda-times-backend.herokuapp.com/topics")
         debugger
     });
 
+function Tab(topic) {
+    let tab = document.createElement("div");
+    tab.setAttribute("class", "tab");
+    tab.textContent = topic;
+}
