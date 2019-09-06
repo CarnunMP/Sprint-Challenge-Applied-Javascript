@@ -17,3 +17,30 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+function Card(article) {
+    const [card, headline, author, imgContainer, image, authorName] = ["div", "div", "div", "div", "img", "span"]
+        .map(str => document.createElement(str));
+
+    const classes = ["card", "headline", "author", "img-container"];
+    [card, headline, author, imgContainer].map((element, i) => {
+        element.setAttribute("class", classes[i]);
+    });
+
+    const textContents = [article.headline, article.authorName];
+    [headline, authorName].map((element, i) => {
+        element.textContent = textContents[i];
+    });
+
+    image.setAttribute("src", article.authorPhoto);
+
+    imgContainer.appendChild(image);
+    author.appendChild(imgContainer);
+    author.appendChild(authorName);
+    card.appendChild(headline);
+    card.appendChild(author);
+
+    return card;
+}
+
+console.log(Card({"authorName" : "X", "authorPhoto": "./assets/bones.jpg", "headline": "Z"}));
