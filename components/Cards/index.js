@@ -43,4 +43,23 @@ function Card(article) {
     return card;
 }
 
-console.log(Card({"authorName" : "X", "authorPhoto": "./assets/bones.jpg", "headline": "Z"}));
+// console.log(Card({"authorName" : "X", "authorPhoto": "./assets/bones.jpg", "headline": "Z"}));
+
+axios.get("https://lambda-times-backend.herokuapp.com/articles")
+    .then(response => {
+        const data = response.data.articles;
+        let articlesArray = [];
+        for (let articleGroup in data) {
+            articlesArray = articlesArray.concat(data[articleGroup]);
+        }
+
+        const cardsContainer = document.querySelector(".cards-container");
+        articlesArray.map(article => {
+            cardsContainer.appendChild(Card(article));    
+        })
+    })
+    .catch(error => {
+        debugger
+    });
+
+
