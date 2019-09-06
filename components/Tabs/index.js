@@ -10,14 +10,19 @@
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
     .then(response => {
-        console.log(response);
+        const topicsArray = response.data.topics;
+        const topicsElement = document.querySelector(".topics");
+        topicsArray.forEach(topic => {
+            topicsElement.appendChild(Tab(topic));
+        });
     })
     .catch(error => {
         debugger
     });
 
 function Tab(topic) {
-    let tab = document.createElement("div");
+    const tab = document.createElement("div");
     tab.setAttribute("class", "tab");
     tab.textContent = topic;
+    return tab;
 }
