@@ -18,69 +18,70 @@
   </div>
 */
 
-// function Carousel(images) {
-//   const [carousel, leftButton, rightButton] = ["carousel", "left-button", "right-button"].map(str => {
-//     const element = document.createElement("div");
-//     element.setAttribute("div", str);
-//     return element;
-//   });
+function Carousel(images) {
+  const [carousel, leftButton, rightButton] = ["carousel", "left-button", "right-button"].map(str => {
+    const element = document.createElement("div");
+    element.setAttribute("div", str);
+    return element;
+  });
 
-//   leftButton.textContent = " < ";
-//   rightButton.textContent = " > ";
+  leftButton.textContent = " < ";
+  rightButton.textContent = " > ";
 
-//   const imageElements = [];
-//   images.forEach(image => {
-//     let imageElement = document.createElement("img");
-//     imageElement.setAttribute("src", image);
-//     imageElements.push(imageElement);
-//   });
+  const imageElements = [];
+  images.forEach(image => {
+    let imageElement = document.createElement("img");
+    imageElement.setAttribute("src", image);
+    imageElements.push(imageElement);
+  });
 
-//   let carouselChildren = [leftButton].concat(imageElements);
-//   carouselChildren.push(rightButton);
+  let carouselChildren = [leftButton].concat(imageElements);
+  carouselChildren.push(rightButton);
 
-//   carouselChildren.forEach(child => {
-//     carousel.appendChild(child);
-//   })
+  carouselChildren.forEach(child => {
+    carousel.appendChild(child);
+  })
 
-//   return carousel;
-// }
+  return carousel;
+}
 
-// // console.log(Carousel(["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/turntable.jpeg"]));
-// const images = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
-// const carouselContainer = document.querySelector(".carousel-container");
-// const carouselElement = Carousel(images);
-// carouselContainer.appendChild(carouselElement);
 
-// const carouselImages = carouselContainer.querySelectorAll("img");
-// let currentIndex = 0;
-// carouselImages.forEach((image, index) => {
-//   displayCurrentImage(image, index);
-//   image.style.width = "100vw";
-// });
-// function displayCurrentImage(image, index) {
-//   index != currentIndex ?
-//     image.style.display = "none" :
-//     image.style.display = "inherit";
-// }
+const images = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
+const carouselContainer = document.querySelector(".carousel-container");
+const carouselElement = Carousel(images);
+carouselContainer.appendChild(carouselElement);
+carouselContainer.style.flexDirection = "row";
 
-// carouselElement.style.background = "pink";
+const carouselImages = carouselContainer.querySelectorAll("img");
+console.log(carouselImages);
+let currentIndex = 0;
+function displayCurrentImage() {
+  carouselImages.forEach((image, index) => {
+    index != currentIndex ?
+    image.style.width = "0":
+    image.style.width = "inherit";
 
-// const buttons = carouselElement.querySelectorAll("div");
-// console.log(buttons);
-// buttons[0].addEventListener("click", decreaseCurrentIndex);
-// buttons[1].addEventListener("click", increaseCurrentIndex);
+    console.log(`Current index is : ${currentIndex}`);
+  });
+}
+displayCurrentImage();
 
-// function decreaseCurrentIndex() {
-//   currentIndex - 1 < 0 ?
-//     currentIndex = carouselImages.length - 1 :
-//     currentIndex --;
+const buttons = carouselElement.querySelectorAll("div");
+console.log(buttons);
+buttons[0].addEventListener("click", decreaseCurrentIndex);
+buttons[1].addEventListener("click", increaseCurrentIndex);
 
-//   displayCurrentImage(carouselImages[currentIndex, currentIndex]);
-// }
-// function increaseCurrentIndex() {
-//   currentIndex + 1 >= carouselImages.length ?
-//     currentIndex = 0 :
-//     currentIndex++;
+function decreaseCurrentIndex() {
+  currentIndex - 1 < 0 ?
+    currentIndex = carouselImages.length - 1 :
+    currentIndex --;
 
-//   displayCurrentImage(carouselImages[currentIndex, currentIndex]);
-// }
+  displayCurrentImage();
+}
+function increaseCurrentIndex() {
+  currentIndex + 1 >= carouselImages.length ?
+    currentIndex = 0 :
+    currentIndex++;
+
+  displayCurrentImage();
+}
