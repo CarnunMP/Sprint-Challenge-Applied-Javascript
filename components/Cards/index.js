@@ -47,10 +47,10 @@ function Card(article) {
 
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
     .then(response => {
-        const data = response.data.articles;
+        const articles = response.data.articles;
         let articlesArray = [];
-        for (let articleGroup in data) {
-            articlesArray = articlesArray.concat(data[articleGroup]);
+        for (let articleGroup in articles) {
+            articlesArray = articlesArray.concat(articles[articleGroup]);
         }
 
         const cardsContainer = document.querySelector(".cards-container");
@@ -61,5 +61,3 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
     .catch(error => {
         debugger
     });
-
-

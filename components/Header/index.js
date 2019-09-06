@@ -38,6 +38,8 @@ function Header() {
     //     } 
     // });
     // console.log(date);
+
+    // I think I'll leave the above code as-is! I took an approach more like the one attempted here in the Tabs section. :)
 }
 
 let headerContainer = document.querySelector(".header-container");
