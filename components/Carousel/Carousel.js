@@ -7,36 +7,6 @@
     6. Have fun!
 */
 
-function Carosel(images) {
-  const [carosel, leftButton, rightButton] = ["carosel", "left-button", "right-button"].map(str => {
-    const element = document.createElement("div");
-    element.setAttribute("div", str);
-    return element;
-  });
-
-  leftButton.textContent = " < ";
-  rightButton.textContent = " > ";
-
-  const imageElements = [];
-  images.forEach(image => {
-    let imageElement = document.createElement("img");
-    imageElement.setAttribute("src", image);
-    imageElements.push(imageElement);
-  });
-
-  let caroselChildren = [leftButton].concat(imageElements);
-  caroselChildren.push(rightButton);
-  console.log(caroselChildren);
-
-  caroselChildren.forEach(child => {
-    carosel.appendChild(child);
-  })
-
-  return carosel;
-}
-
-// console.log(Carosel(["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/turntable.jpeg"]));
-
 /* HTML:
   <div class="carousel">
     <div class="left-button"> < </div>
@@ -47,3 +17,70 @@ function Carosel(images) {
     <div class="right-button"> > </div>
   </div>
 */
+
+// function Carousel(images) {
+//   const [carousel, leftButton, rightButton] = ["carousel", "left-button", "right-button"].map(str => {
+//     const element = document.createElement("div");
+//     element.setAttribute("div", str);
+//     return element;
+//   });
+
+//   leftButton.textContent = " < ";
+//   rightButton.textContent = " > ";
+
+//   const imageElements = [];
+//   images.forEach(image => {
+//     let imageElement = document.createElement("img");
+//     imageElement.setAttribute("src", image);
+//     imageElements.push(imageElement);
+//   });
+
+//   let carouselChildren = [leftButton].concat(imageElements);
+//   carouselChildren.push(rightButton);
+
+//   carouselChildren.forEach(child => {
+//     carousel.appendChild(child);
+//   })
+
+//   return carousel;
+// }
+
+// // console.log(Carousel(["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/turntable.jpeg"]));
+// const images = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"];
+// const carouselContainer = document.querySelector(".carousel-container");
+// const carouselElement = Carousel(images);
+// carouselContainer.appendChild(carouselElement);
+
+// const carouselImages = carouselContainer.querySelectorAll("img");
+// let currentIndex = 0;
+// carouselImages.forEach((image, index) => {
+//   displayCurrentImage(image, index);
+//   image.style.width = "100vw";
+// });
+// function displayCurrentImage(image, index) {
+//   index != currentIndex ?
+//     image.style.display = "none" :
+//     image.style.display = "inherit";
+// }
+
+// carouselElement.style.background = "pink";
+
+// const buttons = carouselElement.querySelectorAll("div");
+// console.log(buttons);
+// buttons[0].addEventListener("click", decreaseCurrentIndex);
+// buttons[1].addEventListener("click", increaseCurrentIndex);
+
+// function decreaseCurrentIndex() {
+//   currentIndex - 1 < 0 ?
+//     currentIndex = carouselImages.length - 1 :
+//     currentIndex --;
+
+//   displayCurrentImage(carouselImages[currentIndex, currentIndex]);
+// }
+// function increaseCurrentIndex() {
+//   currentIndex + 1 >= carouselImages.length ?
+//     currentIndex = 0 :
+//     currentIndex++;
+
+//   displayCurrentImage(carouselImages[currentIndex, currentIndex]);
+// }
