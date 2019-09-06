@@ -30,6 +30,14 @@ function Header() {
     });
 
     return header;
+
+    // const [header, date, title, temp] = ["div", "span", "h1", "span"].map(str => document.createElement(str));
+    // [header, "header", date, "date", temp, "temp"].forEach((e, index) => {
+    //     if (index % 2 === 0) {
+    //         e.setAttribute("class" , index + 1)
+    //     } 
+    // });
+    // console.log(date);
 }
 
 let headerContainer = document.querySelector(".header-container");
