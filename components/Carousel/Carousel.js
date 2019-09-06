@@ -7,6 +7,36 @@
     6. Have fun!
 */
 
+function Carosel(images) {
+  const [carosel, leftButton, rightButton] = ["carosel", "left-button", "right-button"].map(str => {
+    const element = document.createElement("div");
+    element.setAttribute("div", str);
+    return element;
+  });
+
+  leftButton.textContent = " < ";
+  rightButton.textContent = " > ";
+
+  const imageElements = [];
+  images.forEach(image => {
+    let imageElement = document.createElement("img");
+    imageElement.setAttribute("src", image);
+    imageElements.push(imageElement);
+  });
+
+  let caroselChildren = [leftButton].concat(imageElements);
+  caroselChildren.push(rightButton);
+  console.log(caroselChildren);
+
+  caroselChildren.forEach(child => {
+    carosel.appendChild(child);
+  })
+
+  return carosel;
+}
+
+// console.log(Carosel(["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/turntable.jpeg"]));
+
 /* HTML:
   <div class="carousel">
     <div class="left-button"> < </div>
